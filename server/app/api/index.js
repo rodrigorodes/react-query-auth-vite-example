@@ -9,7 +9,7 @@ var data = {
 var uuid = require('uuid');
 
 var competencias = [{
-	
+
 		id: "8791fdfb-f951-43b2-9da0-25e69c5500cd",
 		competenciaId: "8791fdfb-f951-43b2-9da0-25e69c5500cd",
 		name: "Programador nivel 1",
@@ -18,7 +18,7 @@ var competencias = [{
 	},
 	{
 		id: "8791fdfb-f951-43b2-45888-25e69c5500cd",
-		competenciaId: "8791fdfb-f951-45888-9da0-25e69c5500cd",
+		competenciaId: "8791fdfb-f951-43b2-45888-25e69c5500cd",
 		name: "Programador nivel 1",
 		description: ".Net Developer",
 		dateCreate: dateCreate
@@ -57,17 +57,30 @@ api.competencias = function (req, res) {
 	res.json(competencias);
 };
 
+api.competencia = function (req, res) {
+
+	const competenciaId = req.params.competenciaId;
+
+	var item = competencias.
+	filter((competencia) => {
+		return competencia.competenciaId === competenciaId
+
+	});
+
+	res.json(item[0]);
+};
+
 api.competenciaSave = function (req, res) {
 
 	console.log(req.body);
 
 	let competencia = {};
 
-	if(!req.body.data)
-    	competencia = req.body.data;
+	if (!req.body.data)
+		competencia = req.body.data;
 
-    competencia = req.body;
-	
+	competencia = req.body;
+
 	const competenciaId = uuid.v4();
 	const data = {
 		id: competenciaId,
@@ -82,11 +95,28 @@ api.competenciaSave = function (req, res) {
 	res.status(200).json(data);
 };
 
+api.competenciaUpdate = function (req, res) {
+
+	console.log(req.body);
+
+	const competenciaId = req.competenciaId;
+
+	if (!req.body.data) {
+		competencia = req.body.data;
+	}
+
+	competencia = req.body;
+
+	objIndex = competencias.findIndex((obj => obj.competenciaId == competenciaId));
+	competencias[objIndex].name = competencia.name
+	competencias[objIndex].description = competencia.description
+
+	res.status(200).json(data);
+};
+
 api.auth = function (req, res) {
 
 	const userAuth = req.body;
-
-	console.log(userAuth);
 
 	var user = users.
 	filter((user) => {

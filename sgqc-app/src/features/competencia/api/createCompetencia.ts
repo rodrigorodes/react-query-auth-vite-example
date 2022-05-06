@@ -12,14 +12,14 @@ export type CreateCompetenciaDTO = {
 };
 
 type Options = {
-  config?: MutationConfig<typeof createComment>;
+  config?: MutationConfig<typeof createCompetencia>;
 };
 
-export const createComment = (data: CreateCompetenciaDTO): Promise<void> => {
+export const createCompetencia = (data: CreateCompetenciaDTO): Promise<void> => {
   return axios.post("/competencias", data);
 };
 
-export const competenciaCreate = ({ config }: Options = {}) => {
+export const useCreateCompetencia = ({ config }: Options = {}) => {
   const { addNotification } = useNotificationStore();
 
   return useMutation({
@@ -53,6 +53,6 @@ export const competenciaCreate = ({ config }: Options = {}) => {
       });
     },
     ...config,
-    mutationFn: createComment,
+    mutationFn: createCompetencia,
   });
 };

@@ -1,18 +1,24 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { MainLayout } from '@/components/Layout';
-import { CompetenciaForm } from '../components';
-import { Typography } from '@mui/material';
+import { CreateCompetencia, UpdateCompetencia } from '../components';
+import { Authorization, ROLES } from '@/lib/authorization';
 
 type CreateCompetenciaProps = {
-  competenciaId: string;
+  competenciaId: string | null;
 };
 
-export const CompetenciaPage = ({ competenciaId }: CreateCompetenciaProps) => {
-  const navigate = useNavigate();
-
+export const CompetenciaPage = () => {
+  const { competenciaId } = useParams();
+  console.log(competenciaId);
+  
   return (
     <MainLayout title="c">
-      <CompetenciaForm  />
+      {competenciaId != null
+        ? <Authorization
+          forbiddenFallback={<div>Apenas Admin pode aceder.</div>}
+          allowedRoles={[ROLES.ADMIN]}><UpdateCompetencia competenciaId={competenciaId} />
+        </Authorization>
+        : <CreateCompetencia />}
     </MainLayout>
   );
 };

@@ -2,7 +2,8 @@ import { Box, Button, Paper, Typography, CircularProgress } from "@mui/material"
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import DataTable from "../../../components/DataTable/DataTable";
-import { getCompetenciasQuery } from "../api/getCompetencia";
+import { getCompetenciasQuery } from "../api/getCompetencias";
+import { UpdateCompetencia } from "./UpdateCompetencia";
 
 export const CompetenciaLista = () => {
 

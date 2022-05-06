@@ -26,6 +26,18 @@ type LoginFormValues = {
     onSuccess: (data: LoginValues) => void;
 };
 
+function Copyright(props: any) {
+    return (
+        <Typography variant="body2" color="text.secondary" align="center" {...props}>
+            {'Copyright © '}
+            <Link color="inherit">
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
+
 export const LoginForm = ({ onSuccess }: LoginFormValues) => {
 
     const { login, isLoggingIn } = useAuth();
@@ -68,7 +80,7 @@ export const LoginForm = ({ onSuccess }: LoginFormValues) => {
                     >
                         Entrar
                     </Button>
-                    <Grid  container>
+                    <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
                                 Esqueceu a senha?
@@ -77,6 +89,7 @@ export const LoginForm = ({ onSuccess }: LoginFormValues) => {
                     </Grid>
                 </Box>
             </Paper>
+            <Copyright sx={{ mt: 5 }} />
         </Box>
     );
 

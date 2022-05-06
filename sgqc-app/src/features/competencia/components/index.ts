@@ -1,2 +1,3 @@
-export * from './CriaCompetencia';
+export * from './CreateCompetencia';
+export * from './UpdateCompetencia';
 export * from './CompetenciaLista';

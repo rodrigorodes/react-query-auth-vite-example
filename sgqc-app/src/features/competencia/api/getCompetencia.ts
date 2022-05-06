@@ -1,23 +1,31 @@
-import { useQuery } from 'react-query';
-import { axios } from '@/lib/axios';
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query';
+import { useQuery } from "react-query";
+import { axios } from "@/lib/axios";
+import { ExtractFnReturnType, QueryConfig } from "@/lib/react-query";
 
-import { Competencia } from '../types';
+import { Competencia } from "../types";
 
-export const getCompetencias = (): Promise<Competencia> => {
-  return axios.get(`/competencias`);
+export type CompetenciaDTO = {
+  competenciaId: string;
 };
 
-type QueryFnType = typeof getCompetencias;
+export const getCompetencia = ({ competenciaId }: { competenciaId: string }): Promise<Competencia> => {
+  return axios.get(`/competencias/${competenciaId}`);
+};
 
-type UseDiscussionOptions = {
+type QueryFnType = typeof getCompetencia;
+
+type CompetenciaOptions = {
+  competenciaId: string;
   config?: QueryConfig<QueryFnType>;
 };
 
-export const getCompetenciasQuery = ({ config }: UseDiscussionOptions = {}) => {
+export const useCompetencia = ({
+  competenciaId,
+  config,
+}: CompetenciaOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
-    queryKey: ['competencias'],
-    queryFn: () => getCompetencias(),
+    queryKey: ["competencias", competenciaId],
+    queryFn: () => getCompetencia({ competenciaId }),
   });
 };

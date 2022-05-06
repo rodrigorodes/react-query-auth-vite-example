@@ -5,7 +5,7 @@ import { Box, Button, Checkbox, FormControlLabel, Grid, Link, Paper, Typography 
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { ROLES, Authorization } from '@/lib/authorization';
-import { CreateCompetenciaDTO, competenciaCreate } from '../api/createCompetencia';
+import { CreateCompetenciaDTO, useCreateCompetencia } from '../api/createCompetencia';
 import { User } from '../../users';
 
 const schema = yup.object({
@@ -22,15 +22,10 @@ type CreateCompetenciaProps = {
     competenciaId: string;
 };
 
-type RegisterFormProps = {
-    onSuccess: (data: CreateCompetenciaDTO) => void;
-};
-
-export const CompetenciaForm = () => {
+export const CreateCompetencia = () => {
     const { user } = useAuth();
 
-    const createCompetenciaMutation = competenciaCreate();
-
+    const createCompetenciaMutation = useCreateCompetencia();
 
     const { handleSubmit, reset, control, setValue, watch } = useForm<CreateCompetenciaDTO>({
         resolver: yupResolver(schema),
