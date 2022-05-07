@@ -1,11 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Button, Grid, Paper, Typography, Link } from '@mui/material';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInputText } from '@/components/Form/Input';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '@/lib/auth';
+import { Notifications } from '../../../components/Notifications';
 
 const schema = yup.object({
     email: yup.string().required('Campo email é Obrigatório.'),
@@ -41,6 +42,7 @@ function Copyright(props: any) {
 export const LoginForm = ({ onSuccess }: LoginFormValues) => {
 
     const { login, isLoggingIn } = useAuth();
+    const [error, setError] = useState(null);
 
 
     const { handleSubmit, control } = useForm<LoginFormValues>({
@@ -48,9 +50,13 @@ export const LoginForm = ({ onSuccess }: LoginFormValues) => {
         defaultValues: defaultValues
     });
 
-    const onSubmit = (data: LoginValues) => {
-        login(data);
-        onSuccess(data);
+    const onSubmit = async (data: LoginValues) => {
+        try {
+            await login(data);
+            onSuccess(data);
+        } catch (err) {
+            setError(err);
+        }
     }
 
     return (
@@ -67,7 +73,6 @@ export const LoginForm = ({ onSuccess }: LoginFormValues) => {
                 elevation={0}
             >
                 <Box component="form" sx={{ mt: 2 }}>
-
                     <Typography variant="h4" component="h3" align="center" >Login</Typography>
                     <FormInputText name="email" control={control} label="E-mail" />
                     <FormInputText name="password" control={control} label="Senha" />

@@ -4,10 +4,6 @@ import { ExtractFnReturnType, QueryConfig } from "@/lib/react-query";
 
 import { Competencia } from "../types";
 
-export type CompetenciaDTO = {
-  competenciaId: string;
-};
-
 export const getCompetencia = ({ competenciaId }: { competenciaId: string }): Promise<Competencia> => {
   return axios.get(`/competencias/${competenciaId}`);
 };

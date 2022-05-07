@@ -9,7 +9,6 @@ export const CompetenciaListaPage = () => {
     <MainLayout title="Consultar Competências">
       <CompetenciaLista onSuccess={
         (data) => {
-          console.log(data);
           navigate('/')
         }
       } />

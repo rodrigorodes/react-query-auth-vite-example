@@ -14,7 +14,7 @@ const ErrorFallback = () => {
 
     <Alert severity="warning">
       <AlertTitle>Erro</AlertTitle>
-        Ooops, <strong>Ocorreu algum erro ! :</strong>
+      Ooops, <strong>Ocorreu algum erro ! :</strong>
 
       <Button className="mt-4" onClick={() => window.location.assign(window.location.origin)}>
         Refresh
@@ -30,7 +30,7 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    
+
     <React.Suspense
       fallback={
         <div className="flex items-center justify-center w-screen h-screen">

@@ -67,6 +67,8 @@ api.competencia = function (req, res) {
 
 	});
 
+	console.log(item[0]);
+
 	res.json(item[0]);
 };
 
@@ -74,21 +76,23 @@ api.competenciaSave = function (req, res) {
 
 	console.log(req.body);
 
-	let competencia = {};
+	let competencia = req.body;
 
 	if (!req.body.data)
 		competencia = req.body.data;
 
-	competencia = req.body;
+	console.log(competencia);
 
 	const competenciaId = uuid.v4();
 	const data = {
 		id: competenciaId,
 		competenciaId: competenciaId,
-		name: competencia.name,
-		description: competencia.description,
+		name: competencia.data?.name,
+		description: competencia.data?.description,
 		dateCreate: dateCreate
 	}
+
+	console.log(data);
 
 	competencias.push(data);
 

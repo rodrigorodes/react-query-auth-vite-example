@@ -4,20 +4,6 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const handleClick = (cellValues) => {
-
-  //const navigation = useNavigate();
-
-  console.log(cellValues.row.competenciaId);
-
-    // navigation(
-    //   '/competencias', {
-    //   state: {
-    //     competenciaId: cellValues.row.competenciaId,
-    //   }
-    // });
-}
-
 const columns: GridColDef[] = [
 
   { field: 'id', headerName: 'ID', width: 200 },

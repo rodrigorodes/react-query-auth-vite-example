@@ -2,15 +2,31 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { MainLayout } from '@/components/Layout';
 import { CreateCompetencia, UpdateCompetencia } from '../components';
 import { Authorization, ROLES } from '@/lib/authorization';
-
-type CreateCompetenciaProps = {
-  competenciaId: string | null;
-};
+import { useCompetencia } from '../api/getCompetencia';
+import { Box, CircularProgress } from '@mui/material';
 
 export const CompetenciaPage = () => {
   const { competenciaId } = useParams();
-  console.log(competenciaId);
-  
+
+  if (competenciaId) {
+    const useCompetenciaQuery = useCompetencia({ competenciaId });
+
+    if (useCompetenciaQuery.isLoading) {
+      return (
+        <Box sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <CircularProgress />
+        </Box>
+      );
+    }
+
+    if (!useCompetenciaQuery.data) return null;
+  }
+
   return (
     <MainLayout title="c">
       {competenciaId != null

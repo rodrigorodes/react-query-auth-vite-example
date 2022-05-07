@@ -8,6 +8,7 @@ import { useAuth } from '../lib/auth';
 import storage from '../utils/storage';
 import { queryClient } from '../lib/react-query';
 import { Redirect } from 'react-router-dom';
+import { Notifications } from '../components/Notifications';
 
 const { Dashboard } = lazyImport(() => import('@/features/misc'), 'Dashboard');
 const { CompetenciasRoutes } = lazyImport(() => import('@/features/competencia'), 'CompetenciasRoutes');

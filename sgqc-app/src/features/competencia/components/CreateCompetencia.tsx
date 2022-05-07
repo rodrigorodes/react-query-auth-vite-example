@@ -14,6 +14,7 @@ const schema = yup.object({
 });
 
 const defaultValues = {
+    id: '001',
     name: "",
     description: ""
 };

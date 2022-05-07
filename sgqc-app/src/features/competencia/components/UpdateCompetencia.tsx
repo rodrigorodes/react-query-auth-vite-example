@@ -23,20 +23,24 @@ export const UpdateCompetencia = ({ competenciaId }: UpdateCompetenciaProps) => 
     const { user } = useAuth();
 
     const useCompetenciaQuery = useCompetencia({ competenciaId });
+    console.log("useCompetenciaQuery" + useCompetenciaQuery);
+
     const updateCompetenciaMutation = useUpdateCompetencia();
 
-    console.log("UPDATE-" + useCompetenciaQuery.data.body);
+    const defaultValues = {
+        name: useCompetenciaQuery.data?.name,
+        description: useCompetenciaQuery.data?.description,
+    };
+
+    console.log(defaultValues);
 
     const { handleSubmit, reset, control, setValue, watch } = useForm<UpdateCompetenciaDTO>({
         resolver: yupResolver(schema),
-        defaultValues: {
-            name: useCompetenciaQuery.data?.name,
-            description: useCompetenciaQuery.data?.description
-        }
+        defaultValues: defaultValues,
     });
 
     const onSubmit = async (values: UpdateCompetenciaDTO) => {
-        await updateCompetenciaMutation.mutateAsync({ data: values });
+        await updateCompetenciaMutation.mutateAsync({ data: values, competenciaId });
     }
 
     return (

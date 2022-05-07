@@ -3,10 +3,6 @@ import { CompetenciaPage } from './CompetenciaPage';
 import { CompetenciaListaPage } from './CompetenciaListaPage';
 
 export const CompetenciasRoutes = () => {
-
-  const { competenciaId } = useParams();
-  console.log(competenciaId);
-
   return (
     <Routes>
       <Route path="cadastrar" element={<CompetenciaPage />} />
