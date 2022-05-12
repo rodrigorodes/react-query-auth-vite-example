@@ -5,12 +5,12 @@ import { UsersList } from '../components/UsersList';
 
 export const Users = () => {
   return (
-    <ContentLayout title="Users">
-      <Authorization
-        forbiddenFallback={<div>Only admin can view this.</div>}
-        allowedRoles={[ROLES.ADMIN]}
-      >
-      </Authorization>
-    </ContentLayout>
+    <Authorization
+      forbiddenFallback={<div>Apenas Admin pode acessar.</div>}
+      allowedRoles={[ROLES.ADMIN]}
+    >
+      <ContentLayout title='Consultar Usuário'>
+      </ContentLayout>
+    </Authorization>
   );
 };

@@ -28,7 +28,7 @@ export const CompetenciaPage = () => {
   }
 
   return (
-    <MainLayout title="c">
+    <MainLayout>
       {competenciaId != null
         ? <Authorization
           forbiddenFallback={<div>Apenas Admin pode aceder.</div>}

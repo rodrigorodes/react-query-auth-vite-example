@@ -7,7 +7,7 @@ export const CompetenciasRoutes = () => {
     <Routes>
       <Route path="cadastrar" element={<CompetenciaPage />} />
       <Route path="/" element={<CompetenciaListaPage />} />
-      <Route path="update/:competenciaId" element={<CompetenciaPage/>} />
+      <Route path="detalhe/:competenciaId" element={<CompetenciaPage/>} />
       <Route path="*" element={<Navigate to="." />} />
     </Routes>
   );

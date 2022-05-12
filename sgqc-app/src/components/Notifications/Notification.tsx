@@ -26,36 +26,24 @@ export const Notification = ({
 
   const [isShowing, setIsShowing] = useState(false)
 
-
   return (
     <>
-      <Transition
-        show={true}
-        as={Fragment}
-        enter="transition-opacity duration-75"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="transition-opacity duration-150"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <Box display="flex" flexDirection="row" justifyContent="center" p={1} m={1} bgcolor="background.paper">
-          <Box sx={{ width: 500 }}>
-            <Typography variant="h2" component="h3">{title}</Typography>
-            <Typography variant="h4" component="p">{title}</Typography>
-            <Typography variant="h4" component="p">{message}</Typography>
-          </Box>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              onDismiss(id);
-            }}
-          >
-            Fechar
-          </Button>
+      <Box display="flex" flexDirection="row" justifyContent="center" p={1} m={1} bgcolor="background.paper">
+        <Box sx={{ width: 500 }}>
+          <Typography variant="h2" component="h3">{title}</Typography>
+          <Typography variant="h4" component="p">{title}</Typography>
+          <Typography variant="h4" component="p">{message}</Typography>
         </Box>
-      </Transition>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            onDismiss(id);
+          }}
+        >
+          Fechar
+        </Button>
+      </Box>
     </>
   );
 };

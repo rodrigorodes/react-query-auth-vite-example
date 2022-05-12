@@ -8,7 +8,7 @@ module.exports = function (app) {
         .post(api.competenciaSave);
 
     app.route('/competencias/:competenciaId')
-        .post(api.competenciaUpdate);
+        .patch(api.competenciaUpdate);
 
     app.route('/competencias/:competenciaId')
         .get(api.competencia);

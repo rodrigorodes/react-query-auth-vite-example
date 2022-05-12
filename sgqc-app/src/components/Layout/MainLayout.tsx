@@ -1,19 +1,19 @@
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import * as React from 'react';
-import { AppBarCustom } from '../AppBarCustom';
+import Footer from '../Footer';
 
 type LayoutProps = {
   children: React.ReactNode;
-  title: string;
 };
 
 
-export const MainLayout = ({ children, title }: LayoutProps) => {
+export const MainLayout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Container component="main" maxWidth="lg">
+      <Container sx={{ mt: 3 }} maxWidth="lg">
         {children}
       </Container>
+      <Footer></Footer>
     </>
   );
 };

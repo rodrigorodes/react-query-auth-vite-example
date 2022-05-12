@@ -6,10 +6,10 @@ export const CompetenciaListaPage = () => {
   const navigate = useNavigate();
 
   return (
-    <MainLayout title="Consultar Competências">
+    <MainLayout>
       <CompetenciaLista onSuccess={
         (data) => {
-          navigate('/')
+          navigate('/');
         }
       } />
     </MainLayout>

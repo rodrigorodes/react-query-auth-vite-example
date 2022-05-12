@@ -8,10 +8,11 @@ var data = {
 };
 var uuid = require('uuid');
 
-var competencias = [{
+var competencias = [
+	{
 
-		id: "8791fdfb-f951-43b2-9da0-25e69c5500cd",
-		competenciaId: "8791fdfb-f951-43b2-9da0-25e69c5500cd",
+		id: "8791fdfb-f951-43b2-9da0-25e69c5500cf",
+		competenciaId: "8791fdfb-f951-43b2-9da0-25e69c5500cf",
 		name: "Programador nivel 1",
 		description: "Java Developer",
 		dateCreate: dateCreate
@@ -101,21 +102,25 @@ api.competenciaSave = function (req, res) {
 
 api.competenciaUpdate = function (req, res) {
 
-	console.log(req.body);
+	const competenciaId = req.params.competenciaId;
 
-	const competenciaId = req.competenciaId;
+	const objIndex = competencias.findIndex((obj => obj.competenciaId === competenciaId));
 
-	if (!req.body.data) {
-		competencia = req.body.data;
-	}
+	// if(!objIndex){
+	// 	console.log('objIndex= ' + objIndex);
+	// 	res.status(404).json("Competencia não encontrada.");
+	// }
 
-	competencia = req.body;
+	let competencia = req.body;
 
-	objIndex = competencias.findIndex((obj => obj.competenciaId == competenciaId));
-	competencias[objIndex].name = competencia.name
-	competencias[objIndex].description = competencia.description
+	const competenciaResponse = competencias[objIndex];
 
-	res.status(200).json(data);
+	competenciaResponse.name = competencia.name
+	competenciaResponse.description = competencia.description
+
+	console.log("UPDATE FINISH:" + competenciaResponse);
+
+	res.status(200).json(competenciaResponse);
 };
 
 api.auth = function (req, res) {

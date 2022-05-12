@@ -1,8 +1,8 @@
-import { axios } from "@/lib/axios";
-import { MutationConfig, queryClient } from "@/lib/react-query";
-import { useNotificationStore } from "@/stores/notifications";
-import { useMutation } from "react-query";
-import { Competencia } from "../types";
+import { axios } from '@/lib/axios';
+import { MutationConfig, queryClient } from '@/lib/react-query';
+import { useNotificationStore } from '@/stores/notifications';
+import { useMutation } from 'react-query';
+import { Competencia } from '../types';
 
 export type UpdateCompetenciaDTO = {
   data: {
@@ -28,16 +28,16 @@ export const useUpdateCompetencia = ({ config }: Options = {}) => {
   return useMutation({
     onMutate: async (updateCompetencia: UpdateCompetenciaDTO) => {
       await queryClient.cancelQueries([
-        "competencias",
+        'competencias',
         updateCompetencia?.competenciaId,
       ]);
 
       const previousCompetencia = queryClient.getQueryData<Competencia[]>([
-        "competencias",
+        'competencias',
       ]);
 
       queryClient.setQueryData(
-        ["competencias", updateCompetencia?.competenciaId],
+        ['competencias', updateCompetencia?.competenciaId],
         {
           ...previousCompetencia,
           ...updateCompetencia.data,
@@ -50,16 +50,16 @@ export const useUpdateCompetencia = ({ config }: Options = {}) => {
     onError: (_, __, context: any) => {
       if (context?.previousComments) {
         queryClient.setQueryData(
-          ["competencias", context.previousComments.id],
+          ['competencias', context.previousComments.id],
           context.previousComments
         );
       }
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries(["competencias", data.id]);
+      queryClient.invalidateQueries(['competencias', data.id]);
       addNotification({
-        type: "success",
-        title: "Competência Alterada com Sucesso.",
+        type: 'success',
+        title: 'Competência Alterada com Sucesso.',
       });
     },
     ...config,
