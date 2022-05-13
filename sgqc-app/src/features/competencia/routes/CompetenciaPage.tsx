@@ -9,6 +9,7 @@ export const CompetenciaPage = () => {
   const { competenciaId } = useParams();
 
   if (competenciaId) {
+    
     const useCompetenciaQuery = useCompetencia({ competenciaId });
 
     if (useCompetenciaQuery.isLoading) {

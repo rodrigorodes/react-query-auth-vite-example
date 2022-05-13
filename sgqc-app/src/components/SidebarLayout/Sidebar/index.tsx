@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
-import { SidebarContext } from '@/contexts/SidebarContext';
-
+import { useSideBarStore } from '@/stores/sidebar';
 import { Box, Drawer, Hidden } from '@mui/material';
 import Logo from '@/components/Logo';
 import { styled } from '@mui/material/styles';
@@ -35,7 +33,7 @@ const TopSection = styled(Box)(
 );
 
 function Sidebar() {
-  const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+  const { sidebarToggle, toggleSidebar } = useSideBarStore();
   const closeSidebar = () => toggleSidebar();
 
   return (

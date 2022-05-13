@@ -15,6 +15,7 @@ import RedeemTwoToneIcon from '@mui/icons-material/RedeemTwoTone';
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
 import TrafficTwoToneIcon from '@mui/icons-material/TrafficTwoTone';
 import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone';
+import GroupIcon from '@mui/icons-material/Group';
 
 export interface MenuItem {
   link?: string;
@@ -53,6 +54,11 @@ const menuItems: MenuItems[] = [
   {
     heading: 'Gerenciamento',
     items: [
+      {
+        name: 'Usuários',
+        icon: GroupIcon,
+        link: '/app/users'
+      },
       {
         name: 'Compêtencias',
         icon: TableChartTwoToneIcon,

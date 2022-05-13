@@ -44,7 +44,7 @@ function WatchList() {
         justifyContent="space-between"
         sx={{ pb: 3 }}
       >
-        <Typography variant="h3">Watch List</Typography>
+        <Typography variant="h3">Taxas de Competências</Typography>
         <ToggleButtonGroup
           value={tabs}
           exclusive
@@ -98,10 +98,10 @@ function WatchList() {
                 sx={{ mt: 3 }}
                 gutterBottom
               >
-                Click something, anything!
+                Clique para ver os itens !
               </Typography>
               <Button variant="contained" size="large" sx={{ mt: 4 }}>
-                Maybe, a button?
+                No Botão ?
               </Button>
             </Card>
           </Grid>

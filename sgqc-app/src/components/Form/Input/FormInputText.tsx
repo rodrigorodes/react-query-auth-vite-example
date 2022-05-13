@@ -1,5 +1,5 @@
 import React from "react";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import { IFormInputValue } from "./FormInputValue";
 
@@ -9,7 +9,7 @@ export const FormInputText = ({ name, control, label }: IFormInputValue) => {
       name={name}
       control={control}
       render={({
-        field: { onChange, value },
+        field: { onBlur, onChange, value },
         fieldState: { error },
         formState,
       }) => (
@@ -17,6 +17,7 @@ export const FormInputText = ({ name, control, label }: IFormInputValue) => {
           helperText={error ? error.message : null}
           size="small"
           error={!!error}
+          onBlur={onBlur} 
           onChange={onChange}
           value={value}
           margin="normal"

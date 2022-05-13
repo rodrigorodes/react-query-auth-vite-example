@@ -3,7 +3,6 @@ import { Grid, Container } from '@mui/material';
 import AccountBalance from '../components/AccountBalance';
 import { MainLayout } from '@/components/Layout';
 import WatchList from '../components/WatchList';
-import Footer from '../../../components/Footer';
 
 export const Dashboard = () => {
   return (

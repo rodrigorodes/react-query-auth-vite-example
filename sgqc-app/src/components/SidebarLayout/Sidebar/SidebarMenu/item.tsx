@@ -1,7 +1,7 @@
 import { FC, ReactNode, useState, useContext } from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
-import { SidebarContext } from '@/contexts/SidebarContext';
+import { useSideBarStore } from '@/stores/sidebar';
 
 import PropTypes from 'prop-types';
 import { Button, Badge, Collapse, ListItem } from '@mui/material';
@@ -31,7 +31,7 @@ const SidebarMenuItem: FC<SidebarMenuItemProps> = ({
 }) => {
   const [menuToggle, setMenuToggle] = useState<boolean>(openParent);
 
-  const { toggleSidebar } = useContext(SidebarContext);
+  const { toggleSidebar } = useSideBarStore();
 
   const toggleMenu = (): void => {
     setMenuToggle((Open) => !Open);

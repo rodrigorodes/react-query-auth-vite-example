@@ -7,6 +7,5 @@ export const Landing = () => {
     <Container>
       <MainLayoutPublic title="Paginá Publica" />
     </Container>
-
   )
 };

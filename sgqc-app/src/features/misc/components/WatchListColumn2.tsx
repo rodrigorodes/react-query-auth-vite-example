@@ -45,10 +45,10 @@ function WatchListColumn2() {
           </AvatarWrapper>
           <Box>
             <Typography variant="h4" noWrap>
-              Ethereum
+              Devops
             </Typography>
             <Typography variant="subtitle1" noWrap>
-              ETH
+              Docker
             </Typography>
           </Box>
         </Box>
@@ -61,10 +61,10 @@ function WatchListColumn2() {
           }}
         >
           <Typography variant="h2" sx={{ pr: 1, mb: 1 }}>
-            $1,968.00
+            20%
           </Typography>
           <Typography color="error">
-            <b>-3.24%</b>
+            <b>-3.24% Ultimo Dia</b>
           </Typography>
         </Box>
         <Box
@@ -74,9 +74,9 @@ function WatchListColumn2() {
             justifyContent: 'flex-start'
           }}
         >
-          <Typography color="error">-$90</Typography>
+          <Typography color="error">80%</Typography>
           <Typography variant="body2" color="text.secondary" sx={{ pl: 1 }}>
-            last 24h
+            30 dias
           </Typography>
         </Box>
       </Box>

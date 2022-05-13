@@ -35,7 +35,7 @@ const WatchListRowChartWrapper = styled(WatchListRowChart)(
 
 function WatchListRow() {
 
-  const price = {
+  const taxa = {
     week: {
       labels: [
         'Monday',
@@ -69,10 +69,10 @@ function WatchListRow() {
               </AvatarWrapper>
               <Box>
                 <Typography variant="h4" noWrap>
-                  Bitcoin
+                  Java
                 </Typography>
                 <Typography variant="subtitle1" noWrap>
-                  BTC
+                  Spring
                 </Typography>
               </Box>
             </Box>
@@ -85,7 +85,7 @@ function WatchListRow() {
               }}
             >
               <Typography variant="h2" sx={{ pr: 1, mb: 1 }}>
-                $56,475.99
+                56%
               </Typography>
               <Typography color="success">
                 <b>+12.5%</b>
@@ -93,8 +93,8 @@ function WatchListRow() {
             </Box>
             <Box height={100} sx={{ ml: -1.5 }}>
               <WatchListRowChartWrapper
-                data={price.week.bitcoin}
-                labels={price.week.labels}
+                data={taxa.week.bitcoin}
+                labels={taxa.week.labels}
               />
             </Box>
           </Box>
@@ -114,10 +114,10 @@ function WatchListRow() {
               </AvatarWrapper>
               <Box>
                 <Typography variant="h4" noWrap>
-                  Ethereum
+                  Devops
                 </Typography>
                 <Typography variant="subtitle1" noWrap>
-                  ETH
+                  Docker
                 </Typography>
               </Box>
             </Box>
@@ -130,7 +130,7 @@ function WatchListRow() {
               }}
             >
               <Typography variant="h2" sx={{ pr: 1, mb: 1 }}>
-                $1,968.00
+                19%
               </Typography>
               <Typography color="error">
                 <b>-3.24%</b>
@@ -138,8 +138,8 @@ function WatchListRow() {
             </Box>
             <Box height={100} sx={{ ml: -1.5 }}>
               <WatchListRowChartWrapper
-                data={price.week.ethereum}
-                labels={price.week.labels}
+                data={taxa.week.ethereum}
+                labels={taxa.week.labels}
               />
             </Box>
           </Box>
@@ -159,10 +159,10 @@ function WatchListRow() {
               </AvatarWrapper>
               <Box>
                 <Typography variant="h4" noWrap>
-                  Cardano
+                  .Net
                 </Typography>
                 <Typography variant="subtitle1" noWrap>
-                  ADA
+                  Core
                 </Typography>
               </Box>
             </Box>
@@ -175,7 +175,7 @@ function WatchListRow() {
               }}
             >
               <Typography variant="h2" sx={{ pr: 1, mb: 1 }}>
-                $23.00
+                23%
               </Typography>
               <Typography color="error">
                 <b>-0.33%</b>
@@ -183,8 +183,8 @@ function WatchListRow() {
             </Box>
             <Box height={100} sx={{ ml: -1.5 }}>
               <WatchListRowChartWrapper
-                data={price.week.cardano}
-                labels={price.week.labels}
+                data={taxa.week.cardano}
+                labels={taxa.week.labels}
               />
             </Box>
           </Box>

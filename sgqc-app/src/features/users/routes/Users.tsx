@@ -1,7 +1,7 @@
-import { ContentLayout } from '@/components/Layout';
+import { MainLayout } from '@/components/Layout';
 import { Authorization, ROLES } from '@/lib/authorization';
 
-import { UsersList } from '../components/UsersList';
+import { CreateUser } from '../components/CreateUser';
 
 export const Users = () => {
   return (
@@ -9,8 +9,9 @@ export const Users = () => {
       forbiddenFallback={<div>Apenas Admin pode acessar.</div>}
       allowedRoles={[ROLES.ADMIN]}
     >
-      <ContentLayout title='Consultar Usuário'>
-      </ContentLayout>
+      <MainLayout>
+        <CreateUser></CreateUser>
+      </MainLayout>
     </Authorization>
   );
 };

@@ -81,7 +81,7 @@ const WatchListRowChart: FC<WatchListRowChartProps> = ({
       callbacks: {
         title: () => { },
         label: (tooltipItem: any) => {
-          return `Price: $${tooltipItem.yLabel}`;
+          return `Taxa: $${tooltipItem.yLabel}`;
         }
       }
     }

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useParams } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { CompetenciaPage } from './CompetenciaPage';
 import { CompetenciaListaPage } from './CompetenciaListaPage';
 

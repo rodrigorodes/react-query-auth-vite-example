@@ -7,10 +7,11 @@ import { ROLES, Authorization } from '@/lib/authorization';
 import { CreateCompetenciaDTO, useCreateCompetencia } from '../api/createCompetencia';
 import uuid from 'react-uuid';
 import { ContentLayout } from '@/components/Layout';
+import { Form } from '../../../components/Form';
 
 const schema = yup.object({
-  name: yup.string().required('Campo name é Obrigatório.'),
-  description: yup.string().required('Campo description é Obrigatório.')
+  name: yup.string().required().min(3),
+  description: yup.string().required()
 });
 
 const defaultValues = {
@@ -36,33 +37,44 @@ export const CreateCompetencia = () => {
     <ContentLayout
       title='Cadastrar Competência'
     >
-      <Box component="form" sx={{ mt: 2 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <FormInputText name="name" control={control} label="Nome" />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormInputText name="description" control={control} label="Descrição" />
-          </Grid>
-          <Authorization allowedRoles={[ROLES.ADMIN]}>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="Receber Notificações"
-              />
+      <Form<CreateCompetenciaDTO['data'], typeof schema>
+        id="create-competencia"
+        onSubmit={async (values) => {
+          await createCompetenciaMutation.mutateAsync({ data: values });
+        }}
+        schema={schema}
+      >
+        {({ control }) => (
+          <>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <FormInputText name="name" control={control} label="Nome" />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormInputText name="description" control={control} label="Descrição" />
+              </Grid>
+              <Authorization allowedRoles={[ROLES.ADMIN]}>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={<Checkbox value="allowExtraEmails" color="primary" />}
+                    label="Receber Notificações"
+                  />
+                </Grid>
+              </Authorization>
             </Grid>
-          </Authorization>
-        </Grid>
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-          color="primary"
-          onClick={handleSubmit(onSubmit)}
-        >
-          Salvar
-        </Button>
-      </Box>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              color="primary"
+            >
+              Salvar
+            </Button>
+          </>
+        )}
+      </Form>
+
     </ContentLayout>
   );
 };

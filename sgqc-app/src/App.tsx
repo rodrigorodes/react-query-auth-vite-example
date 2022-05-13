@@ -2,18 +2,16 @@ import { AppProvider } from './providers/app';
 import { AppRoutes } from './routes';
 import ThemeProvider from './themes/ThemeProvider';
 import { CssBaseline } from '@mui/material';
-import { SidebarProvider } from './contexts/SidebarContext';
 
 export const App = () => {
+
   return (
-    <SidebarProvider>
+    <AppProvider>
       <ThemeProvider>
         <CssBaseline />
-        <AppProvider>
-          <AppRoutes />
-        </AppProvider>
+        <AppRoutes />
       </ThemeProvider>
-    </SidebarProvider>
+    </AppProvider>
   );
 }
 export default App;

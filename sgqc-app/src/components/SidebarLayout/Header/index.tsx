@@ -2,7 +2,7 @@ import { Box, Hidden, IconButton, Tooltip } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
-import { SidebarContext } from '@/contexts/SidebarContext';
+import { useSideBarStore } from '@/stores/sidebar';
 
 import HeaderMenu from './Menu';
 import { useContext } from 'react';
@@ -29,7 +29,7 @@ const HeaderWrapper = styled(Box)(
 
 function Header() {
 
-  const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
+  const { sidebarToggle, toggleSidebar } = useSideBarStore();
 
   return (
     <HeaderWrapper display="flex" alignItems="center">
