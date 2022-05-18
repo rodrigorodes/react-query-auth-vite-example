@@ -8,8 +8,7 @@ export const CompetenciaLista = () => {
 
   const competenciasQuery = getCompetenciasQuery();
 
-  const navigate = useNavigate();
-  const handleClick = () => navigate('/app/competencias/cadastrar');
+
 
   if (competenciasQuery.isLoading) {
     return (
@@ -29,19 +28,14 @@ export const CompetenciaLista = () => {
   if (!competenciasQuery.data) return null;
 
   return (
-    <ContentLayout
-      title='Consultar Competência'
-    >
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleClick}
-      >
-        Criar Competencia
-      </Button>
+    <Box sx={{
+      marginTop: 8,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
       <DataTable data={competenciasQuery.data}></DataTable>
-
-    </ContentLayout>
+    </Box>
   );
 };
 
