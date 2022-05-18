@@ -1,37 +1,19 @@
 import { FormInputText } from '@/components/Form/Input/FormInputText';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Button, Checkbox, FormControlLabel, Grid } from '@mui/material';
-import { useForm } from 'react-hook-form';
+import { Button, Checkbox, FormControlLabel, Grid } from '@mui/material';
 import * as yup from 'yup';
 import { ROLES, Authorization } from '@/lib/authorization';
 import { CreateCompetenciaDTO, useCreateCompetencia } from '../api/createCompetencia';
-import uuid from 'react-uuid';
 import { ContentLayout } from '@/components/Layout';
 import { Form } from '../../../components/Form';
 
 const schema = yup.object({
   name: yup.string().required().min(3),
   description: yup.string().required()
-});
-
-const defaultValues = {
-  id: uuid(),
-  name: '',
-  description: ''
-};
+}); 
 
 export const CreateCompetencia = () => {
 
   const createCompetenciaMutation = useCreateCompetencia();
-
-  const { handleSubmit, control } = useForm<CreateCompetenciaDTO>({
-    resolver: yupResolver(schema),
-    defaultValues: defaultValues
-  });
-
-  const onSubmit = async (values: CreateCompetenciaDTO) => {
-    await createCompetenciaMutation.mutateAsync({ data: values });
-  };
 
   return (
     <ContentLayout

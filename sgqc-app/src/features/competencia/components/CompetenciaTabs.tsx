@@ -1,16 +1,15 @@
-import { SyntheticEvent, useState } from 'react';
+import { Suspense, SyntheticEvent, useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { formatDistance, subMinutes, subHours } from 'date-fns';
-import { Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Container, Grid, Card, CardHeader, CardContent, Divider } from '@mui/material';
+import { Container, Grid, Card, CardHeader, CardContent, Divider, CircularProgress } from '@mui/material';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { CompetenciaTabPanel } from './CompetenciaTabPanel';
+import { lazyImport } from '@/utils/lazyImport';
 
+
+const { CompetenciaTabPanel } = lazyImport(() => import('./CompetenciaTabPanel'), 'CompetenciaTabPanel');
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -21,19 +20,27 @@ function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center w-screen h-screen">
+          <CircularProgress />
+        </div>
+      }
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
-    </div>
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            {children}
+          </Box>
+        )}
+      </div>
+    </Suspense>
   );
 }
 
@@ -66,7 +73,7 @@ export const CompetenciaTabs = () => {
         >
           <Grid item xs={12}>
             <Card>
-              <CardHeader title="Basic Example" />
+              <CardHeader title="Competências" />
               <Divider />
               <CardContent>
                 <Box sx={{ width: '100%' }}>
